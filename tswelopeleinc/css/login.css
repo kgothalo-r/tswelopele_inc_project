@@ -1,0 +1,104 @@
+.form-border {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgb(150, 141, 141);
+    border-radius: 10px;
+}
+
+#sign-in {
+    float: right;
+}
+
+.login-screen {
+    text-align: center;
+}
+
+input[type=text],
+input[type=password] {
+    width: auto;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    font-size: 10px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+}
+
+.btn,
+.user-input {
+    border-radius: 20px;
+    height: 50px;
+}
+
+.reset-password {
+    font-size: 12px;
+}
+
+.api-connect {
+    font-size: 25px;
+}
+
+.footer {
+    height: 0;
+    color: rgb(255, 255, 255);
+}
+
+
+/*Small devices (landscape phones, 576px and up)*/
+
+@media (max-width: 576px) {
+    .side-crop {
+        height: 300px;
+        overflow: hidden;
+    }
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media screen and (max-width: 768px) {
+    .side-crop {
+        height: 300px;
+        overflow: hidden;
+    }
+    .side-crop img {
+        max-width: initial;
+        height: 500px;
+    }
+    .form-border {
+        margin: 5px 60px;
+        border: 1px solid rgb(150, 141, 141);
+        border-radius: 10px;
+    }
+    button {
+        background-color: blue;
+    }
+}
+
+
+/*Large devices (desktops, 992px and up)*/
+
+@media (max-width: 992px) {
+    .side-crop {
+        height: 300px;
+        overflow: hidden;
+    }
+}
+
+
+/*Extra large devices (large desktops, 1200px and up)*/
+
+@media (max-width: 1200px) {
+    .side-crop {
+        height: 300px;
+        overflow: hidden;
+    }
+}

@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Tswelopele, Inc.</title>
 
+    <!--imported-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -13,6 +14,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/d7d2e4ae66.js" crossorigin="anonymous"></script>
 
+    <script>
+        var clean_uri = location.protocol + "//" + location.host + location.pathname;
+        window.history.replaceState({}, document.title, clean_uri);
+    </script>
+
+    <!--user defined-->
+    <script src="js/login.js"></script>
     <link rel="stylesheet" href="css/login.css">
 </head>
 
@@ -37,13 +45,13 @@
                 <div>
                     <div>
                         <h5>Username</h5>
-                        <input type="text" placeholder="Enter Username" name="uname" required class="user-input" id="Username">
+                        <input type="text" placeholder="Enter Username" name="uname" required class="user-input" id="uname">
                         <br/>
                         <h5 for="psw">Password</h5>
-                        <input type="password" placeholder="Enter Password" name="psw" required class="user-input"><br/>
+                        <input type="password" placeholder="Enter Password" name="psw" required class="user-input" id="psw"><br/>
                         <p class="psw reset-password"> <a href="#">Forgot Password?</a></p>
                     </div>
-                    <button type="submit" class="btn btn-primary" onsubmit="getInputValue()">Login</button><br/>
+                    <button type="submit" class="btn btn-primary" id="login">Login</button><br/>
                     <label>
                                 <input type="checkbox" checked="checked" name="remember"> Remember me 
                     </label>

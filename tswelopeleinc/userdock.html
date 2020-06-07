@@ -23,7 +23,13 @@
     <script src="js/dash-js/currentDate.js"></script>
     <script src="js/dash-js/setSection.js"></script>
     <script src="js/dash-js/app_sap.js"></script>
+    <script src="js/login.js"></script>
     <script src="app/app.js"></script>
+
+    <script>
+        var clean_uri = location.protocol + "//" + location.host + location.pathname;
+        window.history.replaceState({}, document.title, clean_uri);
+    </script>
 
     <!--user defined styles-->
     <link rel="stylesheet" href="css/dashboard-edit.css">
@@ -31,7 +37,7 @@
 
 </head>
 
-<body onload="currentDate()" onload="getSection('dash')">
+<body onload="currentDate()" onload="getSection('dash')" onload="userAllocation()">
     <div>
         <nav class="navbar navbar-inverse navbar-expand-lg navbar-expand-md fixed-top">
             <div class="container-fluid">
@@ -40,7 +46,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">[username]</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span id="username"></span></a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Settings</a>
                             <a class="dropdown-item" href="#">Log-Out</a>
@@ -69,7 +75,7 @@
                 <div class="col-lg-8 col-md-8 col-12 col-sm-12">
                     <h2 id="section"></h2>
                     <h2 id="date"></h2>
-                    <p>Welcome [username], ready to work!</p>
+                    <p>Welcome <span id="username"></span>, ready to work!</p>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12 col-sm-12" style="padding-top: 5px;">
                     <div class="add-client">

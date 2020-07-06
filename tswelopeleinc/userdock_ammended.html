@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en" ng-app="tswelopeleinc">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Tswelopele Inc. | Dashboard</title>
+
+    <!--meta charset="utf-8"-->
+
+    <!--imports-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="https://kit.fontawesome.com/d7d2e4ae66.js" crossorigin="anonymous"></script>
+
+
+    <!--user defined scripts-->
+    <script src="js/dash-js/currentDate.js"></script>
+    <script src="js/dash-js/setSection.js"></script>
+    <script src="js/dash-js/app_sap.js"></script>
+    <script src="js/login.js"></script>
+    <script src="app/app.js"></script>
+
+    <script>
+        var clean_uri = location.protocol + "//" + location.host + location.pathname;
+        window.history.replaceState({}, document.title, clean_uri);
+    </script>
+
+    <!--user defined styles-->
+    <link rel="stylesheet" href="css/dashboard-edit.css">
+
+
+</head>
+
+<body onload="currentDate()" onload="getSection('dash')" onload="userAllocation()">
+    <div>
+        <nav class="navbar navbar-inverse navbar-expand-lg navbar-expand-md fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="font-weight: bold;" href="#">TSWELOPELE, INC.</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span id="username"></span></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#">Log-Out</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="main-section row">
+        <div class="col-lg-2 col-md-2 col-12 col-sm-12 element-section">
+            <div class="search-clients">
+                <input type="text" placeholder="Search Clients" name="client-search" class="user-input" id="s-clients">
+            </div>
+            <br/>
+            <div class="dashboard-functions">
+                <div class="dashboard-functions-items"><button id="dash" onclick="getSection('dash')">Dashboard</button></div>
+                <div class="dashboard-functions-items"><button id="clients" onclick="getSection('clients')">Clients</button></div>
+                <div class="dashboard-functions-items"><button id="adhoc" onclick="getSection('adhoc')">Ad-hoc</button></div>
+                <div class="dashboard-functions-items"><button id="schedule" onclick="getSection('schedule')">Schedule</button></div>
+            </div>
+        </div>
+
+        <div class="admin-section col-lg-10 col-md-10 col-12 col-sm-12">
+            <div class="col-lg-12 col-12 col-md-12 row clientadmin" style="height:auto;">
+                <div class="col-lg-8 col-md-8 col-12 col-sm-12">
+                    <h2 id="section"></h2>
+                    <h2 id="date"></h2>
+                    <p>Welcome <span id="username"></span>, ready to work!</p>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12 col-sm-12" style="padding-top: 5px;">
+                    <div class="add-client">
+                        <button id="addclients" class="btn float-right" data-toggle="modal" data-target="#myModal">Add Clients&nbsp;&nbsp;<i class="fas fa-user-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-body modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title" id="section">Add Clients</h2>
+                        </div>
+                        <div class="modal-body">
+                            <label for="title">Title</label><br/>
+                            <select id="title" name="title">
+                                <option value="Mr">Mr</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Dr">Dr</option>
+                            </select>
+                            <br/><br/>
+                            <label for="fname">First Name&nbsp;</label>&emsp;&emsp;
+                            <input type="text" id="fname" name="firstname" placeholder="First name..."> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                            <label for="lname">Last Name&nbsp;</label>&emsp;&emsp;
+                            <input type="text" id="lname" name="lastname" placeholder="Last name...">
+                            <br/><br/>
+                            <label for="birthday">Birthday</label>&emsp;&emsp;&emsp;&nbsp;
+                            <input type="date" id="birthday" name="birthday" placeholder="(dd/mm/yyyy)">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	          <label for="email">Email Address</label>&emsp;
+                            <input type="text" id="email" name="emailaddress" placeholder="Email Address...">
+	           <br/><br/>
+ 	           <label for="contact">Contact Number</label>
+	           <input type="text" id="contact" name="contactnumber" placeholder="Contact Number...">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+	           <label for="idnum">ID Number</label>&emsp;&emsp;&nbsp;&nbsp;
+	           <input type="text" id="id" name="idnum" placeholder="ID number...">
+	           <br/><br/>
+	           <label for="amount">Loan Amount</label>&emsp;
+	           <input type="text id" id="amount" name="loanamount" placeholder="R 00.00">&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+	           <label for="interest">Interest Rate</label>&emsp;&emsp;&nbsp;&nbsp;
+	           <input type="text id" id-"interest" name="interestrate" placeholder="0%">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="addclients" class="btn btn-default" data-dismiss="modal">Close</button>
+	           <button type="button" id="submit" class="btn btn-default" data-dismiss="modal">Submit</button>
+"
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12 col-12 col-md-12 page" onload="load()">
+                <section ng-include=" 'sections/dashboard/dashboard.html' ">
+                </section>
+            </div>
+            <div class="col-lg-12 col-12 col-md-12 page2">
+                <section ng-include="'sections/clients/clients.html'">
+                </section>
+            </div>
+            <div class="col-lg-12 col-12 col-md-12 page4">
+                <section ng-include="'sections/schedule/schedule.html'">
+                </section>
+            </div>
+            <script>
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>
